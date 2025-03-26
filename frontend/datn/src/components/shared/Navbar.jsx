@@ -3,8 +3,13 @@ import { Link } from 'react-router-dom'
 import { Popover, PopoverContent, PopoverTrigger } from '../ui/popover'
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarImage, AvatarFallback } from '../ui/avatar'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+
+
 const Navbar = () => {
     const user = false;
+    const navigate = useNavigate();
     return (
         <div className="bg-white">
             <div className='flex items-center justify-between mx-auto max-w-7xl h-16'>
@@ -14,18 +19,18 @@ const Navbar = () => {
 
                 <div className='flex items-center gap-12'>
                     <ul className='flex font-medium items-center gap-5'>
-                        <li>Home</li>
-                        <li>Jobs</li>
-                        <li>Browse</li>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/jobs">Jobs</Link></li>
+                        <li><Link to="/browse">Browse</Link></li>
                     </ul>
                     {
                         !user ? (
                             <div className='flex items-center gap-2'>
                                 <Link to="/login">
-                                    <Button variant="outline">Login</Button>
+                                    <Button className="cursor-pointer" variant="outline">Login</Button>
                                 </Link>
                                 <Link to="/signup">
-                                    <Button className="bg-[#6A38C2] hover:bg-[#5b30a6]">SignUp</Button>
+                                    <Button className="bg-[#6A38C2] hover:bg-[#5b30a6] cursor-pointer">SignUp</Button>
                                 </Link>
                             </div>
                         ) : (
